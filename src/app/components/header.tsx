@@ -1,5 +1,7 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const Logo = () => (
 	<svg
@@ -70,15 +72,25 @@ interface HeaderProps {
 
 export default function Header({ sections }: HeaderProps) {
 	return (
-		<header>
+		<motion.header
+			className="flex items-center justify-between px-10 py-5 max-w-screen-2xl mx-auto"
+			initial={{
+				y: -100,
+				opacity: 0
+			}}
+			animate={{
+				y: 0,
+				opacity: 1
+			}}
+		>
 			<Logo />
-			<div className="flex gap-7">
+			<div className="flex gap-7 items-center border-gradient">
 				{sections.map((section) => (
 					<Link key={section.displayName} href={section.href}>
 						{section.displayName}
 					</Link>
 				))}
 			</div>
-		</header>
+		</motion.header>
 	)
 }
