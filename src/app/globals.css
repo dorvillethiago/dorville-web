@@ -19,6 +19,6 @@ body,
 #app,
 #app > div {
   height: 100%;
-  background: #f3f1fe;
-  color: #1f1a36;
+  background: var(--background);
+  color: var(--text);
 }

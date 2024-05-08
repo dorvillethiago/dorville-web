@@ -54,8 +54,8 @@ const Logo = () => (
 				y2="33.9552"
 				gradientUnits="userSpaceOnUse"
 			>
-				<stop stop-color="#07AAEF" />
-				<stop offset="1" stop-color="#601CE9" />
+				<stop stopColor="#07AAEF" />
+				<stop offset="1" stopColor="#601CE9" />
 			</linearGradient>
 		</defs>
 	</svg>
@@ -73,7 +73,7 @@ interface HeaderProps {
 export default function Header({ sections }: HeaderProps) {
 	return (
 		<motion.header
-			className="flex items-center justify-between px-10 py-5 max-w-screen-2xl mx-auto"
+			className="flex rounded-lg items-center justify-between px-10 py-5 max-w-screen-2xl mx-auto"
 			initial={{
 				y: -100,
 				opacity: 0
@@ -86,10 +86,21 @@ export default function Header({ sections }: HeaderProps) {
 			<Logo />
 			<div className="flex gap-7 items-center border-gradient">
 				{sections.map((section) => (
-					<Link key={section.displayName} href={section.href}>
+					<Link className='relative hover:text-primary transition-colors' key={section.displayName} href={section.href}>
 						{section.displayName}
 					</Link>
 				))}
+				<motion.div
+					whileHover={{
+						scale: 1.05
+					}}
+					whileTap={{
+						scale: 0.95
+					}}>
+					<Link href="/" className='text-background py-2 px-4 font-medium rounded-lg bg-gradient-to-br from-light-primary to-accent'>
+						Entrar em Contato
+					</Link>
+				</motion.div>
 			</div>
 		</motion.header>
 	)

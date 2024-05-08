@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/header'
 
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins( {
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	style: ["normal", "italic"],
+	subsets: ["latin"]
+})
 
 export const metadata: Metadata = {
 	title: 'Dorville Software',
@@ -12,7 +16,7 @@ export const metadata: Metadata = {
 
 const headerSections = [
 	{ displayName: 'Início', href: '/' },
-	{ displayName: 'Serviços', href: '/about' }
+	{ displayName: 'Serviços', href: '/' }
 ]
 
 export default function RootLayout({
@@ -22,7 +26,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={poppins.className}>
 				<Header sections={headerSections} />
 				{children}
 			</body>
