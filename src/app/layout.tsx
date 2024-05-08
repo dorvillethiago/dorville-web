@@ -3,33 +3,34 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/header'
 
-const poppins = Poppins( {
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-	style: ["normal", "italic"],
-	subsets: ["latin"]
+const poppins = Poppins({
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    style: ['normal', 'italic'],
+    subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
-	title: 'Dorville Software',
-	description: 'Software and IT Company'
+    title: 'Dorville - Desenvolvimento de Software',
+    description:
+        'Compania de desenvolvimento de software e consultoria em tecnologia da informação.',
 }
 
 const headerSections = [
-	{ displayName: 'Início', href: '/' },
-	{ displayName: 'Serviços', href: '/' }
+    { displayName: 'Início', href: '/' },
+    { displayName: 'Serviços', href: '/' },
 ]
 
 export default function RootLayout({
-	children
+    children,
 }: Readonly<{
-	children: React.ReactNode
+    children: React.ReactNode
 }>) {
-	return (
-		<html lang="en">
-			<body className={poppins.className}>
-				<Header sections={headerSections} />
-				{children}
-			</body>
-		</html>
-	)
+    return (
+        <html lang="en">
+            <body className={poppins.className}>
+                <Header sections={headerSections} />
+                {children}
+            </body>
+        </html>
+    )
 }

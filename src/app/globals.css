@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --vertical-gradient: linear-gradient(180deg, #07aaef 0%, #601ce9 100%);
-  --horizontal-gradient: linear-gradient(90deg, #07aaef 0%, #601ce9 100%);
-  --diagonal-gradient: linear-gradient(135deg, #07aaef 0%, #601ce9 100%);
-  --primary: #3561ec;
-  --secondary: #d7dcf0;
-  --accent: #601ce9;
-  --background: #f2f3f8;
-  --light-primary: #07aaef;
-  --text: #08090d;
+    --vertical-gradient: linear-gradient(180deg, #07aaef 0%, #601ce9 100%);
+    --horizontal-gradient: linear-gradient(90deg, #07aaef 0%, #601ce9 100%);
+    --diagonal-gradient: linear-gradient(135deg, #07aaef 0%, #601ce9 100%);
+    --primary: #3561ec;
+    --secondary: #d7dcf0;
+    --accent: #601ce9;
+    --background: #f2f3f8;
+    --light-primary: #07aaef;
+    --text: #08090d;
 }
 
 html,
 body,
 #app,
 #app > div {
-  height: 100%;
-  background: var(--background);
-  color: var(--text);
+    height: 100%;
+    background: var(--background);
+    color: var(--text);
 }
