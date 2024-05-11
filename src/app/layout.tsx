@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import './globals.css'
+import '@/app/globals.css'
 import Header from '@/app/components/header'
 
 const poppins = Poppins({
@@ -26,7 +26,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
+        <html lang="pt-BR">
             <body className={poppins.className}>
                 <Header sections={headerSections} />
                 {children}

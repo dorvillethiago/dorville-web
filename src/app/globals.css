@@ -14,11 +14,14 @@
     --text: #08090d;
 }
 
+body {
+    background: var(--background);
+}
+
 html,
 body,
 #app,
 #app > div {
     height: 100%;
-    background: var(--background);
     color: var(--text);
 }

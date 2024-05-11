@@ -8,7 +8,7 @@ const Content = () => (
             x: -50,
             opacity: 0,
         }}
-        animate={{
+        whileInView={{
             x: 0,
             opacity: 1,
         }}
@@ -53,14 +53,14 @@ const Content = () => (
 
 export default function Hero() {
     return (
-        <div className="max-w-screen-2xl mx-auto px-10 pt-8 lg:pt-16 pb-16 overflow-x-hidden flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center">
+        <section className="max-w-screen-2xl mx-auto px-10 pt-8 lg:pt-16 pb-16 overflow-x-hidden flex relative flex-col gap-12 lg:flex-row lg:justify-between lg:items-center">
             <Content />
             <motion.div
                 initial={{
                     opacity: 0,
                     x: 50,
                 }}
-                animate={{
+                whileInView={{
                     opacity: 1,
                     x: 0,
                 }}
@@ -74,6 +74,6 @@ export default function Hero() {
                     priority
                 />
             </motion.div>
-        </div>
+        </section>
     )
 }
