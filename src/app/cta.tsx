@@ -14,7 +14,7 @@ export function Cta() {
                     opacity: 1,
                     y: 0,
                 }}
-                className="text-4xl text-background z-10"
+                className="text-4xl text-background z-10 text-center"
             >
                 Não fique no passado, venha conosco para o futuro.
             </motion.h4>
