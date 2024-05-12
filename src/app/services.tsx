@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 
 const Service = ({ text }: { text: string }) => (
-    <motion.li className="p-7 rounded-xl bg-secondary hover:bg-gradient-to-tr from-light-primary to-accent hover:text-background hover:font-bold hover:scale-105 transition-all cursor-pointer">
+    <motion.li className="p-7 rounded-xl bg-secondary hover:bg-gradient-to-tr from-light-primary to-accent hover:text-background hover:scale-105 transition-all cursor-pointer">
         {text}
     </motion.li>
 )
@@ -38,7 +38,6 @@ export default function Services() {
                 <Service text="Consultoria de TI" />
                 <Service text="Aplicativos Mobile" />
                 <Service text="Dashboards Interativos" />
-                <Service text="Segurança da Informação" />
                 <Service text="Integração de Sistemas" />
                 <Service text="Aplicações Desktop" />
             </motion.ul>

@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 
-export function Cta() {
+export default function Cta() {
     return (
         <section className="my-32 bg-cover bg-[url('/alternative-tech-background.jpg')] px-10 py-20 flex flex-col justify-center items-center gap-10 relative">
             <div className="mix-blend-multiply w-full h-full absolute bg-gradient-to-r from-light-primary to-accent" />

@@ -37,7 +37,7 @@ const Benefit = ({ text }: { text: string }) => (
 
 export default function Benefits() {
     return (
-        <section className="my-24 bg-secondary py-20 lg:py-32">
+        <section className="my-24 bg-secondary py-20 lg:py-28">
             <div className="max-w-screen-2xl mx-auto flex flex-col gap-12 lg:gap-20 lg:flex-row lg:justify-between xl:items-center px-10 overflow-x-hidden">
                 <motion.div
                     initial={{
@@ -50,7 +50,7 @@ export default function Benefits() {
                     }}
                 >
                     <Image
-                        className="rounded-lg min-w-[527px]"
+                        className="rounded-lg min-w-[500px] xl:min-w-[600px]"
                         src="/dashboard-tablet.png"
                         alt="Dashboard tablet"
                         width={558}
