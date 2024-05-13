@@ -15,10 +15,8 @@ const Content = () => (
 		className="flex max-w-[510px] xl:max-w-[560px] flex-col gap-8 lg:gap-16"
 	>
 		<h1 className="font-semibold text-5xl xl:text-6xl 2xl:text-7xl">
-			<strong className="font-semibold bg-gradient-to-r from-light-primary to-accent inline-block text-transparent bg-clip-text bg-300% animate-gradient">
-				Software
-			</strong>{' '}
-			seguro, ágil e acessível.
+			<strong className="font-semibold text-primary">Software</strong> seguro,
+			ágil e acessível.
 		</h1>
 		<h2 className="leading-5">
 			Desenvolvemos soluções tecnológicas para empresas de todos os tipos e
