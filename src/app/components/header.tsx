@@ -1,7 +1,5 @@
-'use client'
 import Link from 'next/link'
 import React from 'react'
-import { motion } from 'framer-motion'
 
 const Logo = () => (
 	<svg
@@ -81,34 +79,19 @@ const SectionList = ({ sections }: HeaderProps) => (
 				{section.displayName}
 			</Link>
 		))}
-		<motion.div
-			whileHover={{
-				scale: 1.05
-			}}
-			whileTap={{
-				scale: 0.95
-			}}
-		>
+		<div>
 			<Link
 				href="/"
 				className="text-background py-2 px-4 font-medium rounded-lg bg-gradient-to-br from-light-primary to-accent"
 			>
 				Entrar em Contato
 			</Link>
-		</motion.div>
+		</div>
 	</div>
 )
 
 const SidebarButton = () => (
-	<motion.button
-		whileHover={{
-			scale: 1.08
-		}}
-		whileTap={{
-			scale: 0.98
-		}}
-		className="min-[716px]:hidden"
-	>
+	<button type="button" className="min-[716px]:hidden">
 		<svg
 			width="35"
 			height="35"
@@ -135,21 +118,17 @@ const SidebarButton = () => (
 				</linearGradient>
 			</defs>
 		</svg>
-	</motion.button>
+	</button>
 )
 
 export default function Header({ sections }: HeaderProps) {
 	return (
-		<motion.header
-			initial={{ y: -100 }}
-			animate={{ y: 0 }}
-			className="flex w-full rounded-lg items-center justify-between px-10 py-5 max-w-screen-2xl mx-auto"
-		>
+		<header className="flex w-full rounded-lg items-center justify-between px-10 py-5 max-w-screen-2xl mx-auto">
 			<Logo />
 			<>
 				<SectionList sections={sections} />
 				<SidebarButton />
 			</>
-		</motion.header>
+		</header>
 	)
 }
