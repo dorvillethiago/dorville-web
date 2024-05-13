@@ -4,33 +4,37 @@ import Header from '@/app/components/header'
 import '@/globals.css'
 
 const poppins = Poppins({
-    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-    style: ['normal', 'italic'],
-    subsets: ['latin'],
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	style: ['normal', 'italic'],
+	subsets: ['latin']
 })
 
 export const metadata: Metadata = {
-    title: 'Dorville - Desenvolvimento de Software',
-    description:
-        'Compania de desenvolvimento de software e consultoria em tecnologia da informação.',
+	title: 'Dorville - Desenvolvimento de Software',
+	description:
+		'Compania de desenvolvimento de software e consultoria em tecnologia da informação.'
 }
 
 const headerSections = [
-    { displayName: 'Início', href: '/' },
-    { displayName: 'Serviços', href: '/' },
+	{ displayName: 'Início', href: '/' },
+	{ displayName: 'Serviços', href: '/' }
 ]
 
 export default function RootLayout({
-    children,
+	children
 }: Readonly<{
-    children: React.ReactNode
+	children: React.ReactNode
 }>) {
-    return (
-        <html lang="pt-BR">
-            <body className={poppins.className}>
-                <Header sections={headerSections} />
-                {children}
-            </body>
-        </html>
-    )
+	return (
+		<html lang="pt-BR">
+			<body className={poppins.className}>
+				<div className="flex flex-col h-full">
+					<Header sections={headerSections} />
+					<main className="flex-1 overflow-y-auto overflow-x-hidden">
+						{children}
+					</main>
+				</div>
+			</body>
+		</html>
+	)
 }

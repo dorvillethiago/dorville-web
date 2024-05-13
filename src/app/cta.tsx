@@ -6,8 +6,10 @@ export default function Cta() {
 	return (
 		<section className="my-32 px-10 py-20 flex flex-col justify-center items-center gap-10 relative">
 			<Image
-				layout="fill"
-				className="absolute object-cover"
+				width={1440}
+				height={245}
+				priority
+				className="absolute object-cover h-full"
 				src="/alternative-tech-background.jpg"
 				alt="Tech Background"
 			/>

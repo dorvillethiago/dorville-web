@@ -143,18 +143,13 @@ export default function Header({ sections }: HeaderProps) {
 		<motion.header
 			initial={{ y: -100 }}
 			animate={{ y: 0 }}
-			className="fixed top-0 z-50 w-full bg-background drop-shadow-sm"
+			className="flex w-full rounded-lg items-center justify-between px-10 py-5 max-w-screen-2xl mx-auto"
 		>
-			<div
-				className="flex mx-auto items-center justify-between px-10 py-5 max-w-screen-2xl"
-				id="content-wrapper"
-			>
-				<Logo />
-				<>
-					<SectionList sections={sections} />
-					<SidebarButton />
-				</>
-			</div>
+			<Logo />
+			<>
+				<SectionList sections={sections} />
+				<SidebarButton />
+			</>
 		</motion.header>
 	)
 }

@@ -14,7 +14,7 @@ const Content = () => (
 		}}
 		className="flex max-w-[510px] xl:max-w-[560px] flex-col gap-8 lg:gap-16"
 	>
-		<h1 className="font-semibold text-5xl xl:text-6xl 2xl:text-7xl">
+		<h1 className="font-semibold leading-[1.2em] text-5xl xl:text-6xl 2xl:text-7xl">
 			<strong className="font-semibold text-primary">Software</strong> seguro,
 			ágil e acessível.
 		</h1>
@@ -51,7 +51,7 @@ const Content = () => (
 
 export default function Hero() {
 	return (
-		<section className="max-w-screen-2xl mt-20 mx-auto px-10 pt-8 lg:pt-16 pb-16 overflow-x-hidden flex relative flex-col gap-12 lg:flex-row lg:justify-between lg:items-center">
+		<section className="max-w-screen-2xl mx-auto px-10 pt-8 lg:pt-16 pb-16 overflow-x-hidden flex relative flex-col gap-12 lg:flex-row lg:justify-between lg:items-center">
 			<Content />
 			<motion.div
 				initial={{
