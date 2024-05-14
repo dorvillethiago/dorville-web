@@ -43,13 +43,14 @@ const Benefit = ({ text }: { text: string }) => (
 export default function Benefits() {
     return (
         <section className="my-24 py-20 lg:py-28">
-            <div className="max-w-screen-2xl mx-auto flex flex-col gap-12 lg:gap-20 lg:flex-row lg:justify-between xl:items-center px-10 overflow-x-hidden  overflow-y-hidden">
+            <div className="max-w-screen-2xl mx-auto flex flex-col gap-12 lg:gap-20 lg:flex-row lg:justify-between xl:items-center px-10 overflow-hidden">
                 <MotionDiv
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    className="w-3/5"
                 >
                     <Image
-                        className="rounded-lg min-w-[500px] xl:min-w-[600px]"
+                        className="rounded-lg w-full min-w-[500px] xl:min-w-[600px]"
                         src="/dashboard-tablet.png"
                         alt="Dashboard tablet"
                         width={558}

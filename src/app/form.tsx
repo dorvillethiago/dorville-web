@@ -6,16 +6,23 @@ import { z } from 'zod'
 import { MotionH4 } from './components/framer-motion/motion-h4'
 import { MotionFieldset } from './components/framer-motion/motion-fieldset'
 import { MotionButton } from './components/framer-motion/motion-button'
+import toast from 'react-hot-toast'
+import { send } from './email'
+import { useState } from 'react'
 
 const schema = z.object({
-    email: z.string().email(),
-    phone: z.string().min(10).max(11),
-    message: z.string().min(10).max(200),
+    email: z.string().email({ message: 'Email inválido' }),
+    phone: z.string().min(10, 'Telefone inválido').max(11),
+    message: z
+        .string()
+        .min(10, 'Mensagem contém menos que 11 caracteres')
+        .max(200),
 })
 
 type Schema = z.infer<typeof schema>
 
 export default function Form() {
+    const [isMessageSent, setIsMessageSent] = useState<boolean>(false)
     const inputClasses =
         'bg-transparent transition-colors border-b-2 outline-none border-[#D3D3D3] focus:border-primary'
 
@@ -29,8 +36,19 @@ export default function Form() {
         resolver: zodResolver(schema),
     })
 
-    function onSubmit(data: Schema) {
-        console.log(data)
+    async function onSubmit(data: Schema) {
+        if (isMessageSent) {
+            toast.error('Você já enviou uma mensagem!')
+            return
+        }
+        const loading = toast.loading('Enviando mensagem...')
+        const emailResponse = await send(data)
+        if (emailResponse.sent) {
+            toast.success('Mensagem enviada com sucesso!', { id: loading })
+            setIsMessageSent(true)
+        } else {
+            toast.error('Erro ao enviar mensagem', { id: loading })
+        }
     }
 
     return (
@@ -52,7 +70,12 @@ export default function Form() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="flex flex-col gap-2"
                     >
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">
+                            Email
+                            <em className="text-red-400 text-xs ml-3">
+                                {errors.email?.message}
+                            </em>
+                        </label>
                         <input
                             {...register('email')}
                             type="email"
@@ -65,7 +88,12 @@ export default function Form() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="flex flex-col gap-2"
                     >
-                        <label htmlFor="phone">Phone</label>
+                        <label htmlFor="phone">
+                            Phone{' '}
+                            <em className="text-red-400 text-xs ml-3">
+                                {errors.phone?.message}
+                            </em>
+                        </label>
                         <input
                             {...register('phone')}
                             type="text"
@@ -78,9 +106,15 @@ export default function Form() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="flex flex-col gap-2"
                     >
-                        <label htmlFor="message">Mensagem</label>
+                        <label htmlFor="message">
+                            Mensagem{' '}
+                            <em className="text-red-400 text-xs ml-3">
+                                {errors.message?.message}
+                            </em>
+                        </label>
                         <textarea
-                            className={`${inputClasses} bg-red-500 min-h-[100px] resize-none`}
+                            {...register('message')}
+                            className={`${inputClasses} min-h-[100px] resize-none`}
                             id="message"
                         />
                     </MotionFieldset>
@@ -89,7 +123,7 @@ export default function Form() {
                         whileInView={{ opacity: 1, y: 0 }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        type="button"
+                        type="submit"
                         className="bg-primary rounded-xl w-full py-4 transition-colors text-background"
                     >
                         Enviar
