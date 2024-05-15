@@ -1,14 +1,15 @@
 'use client'
-import { zodResolver } from '@hookform/resolvers/zod'
+import toast from 'react-hot-toast'
 import Image from 'next/image'
+import Turnstile from 'react-turnstile'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { MotionH4 } from './components/framer-motion/motion-h4'
 import { MotionFieldset } from './components/framer-motion/motion-fieldset'
 import { MotionButton } from './components/framer-motion/motion-button'
-import toast from 'react-hot-toast'
-import { send } from './email'
 import { useState } from 'react'
+import TurnstileWidget from './components/turnstile'
 
 const schema = z.object({
     email: z.string().email({ message: 'Email inválido' }),
@@ -22,7 +23,8 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>
 
 export default function Form() {
-    const [isMessageSent, setIsMessageSent] = useState<boolean>(false)
+    const [isMessageSent, setIsMessageSent] = useState(false)
+    const [token, setToken] = useState<string | undefined>(undefined)
     const inputClasses =
         'bg-transparent transition-colors border-b-2 outline-none border-[#D3D3D3] focus:border-primary'
 
@@ -37,17 +39,22 @@ export default function Form() {
     })
 
     async function onSubmit(data: Schema) {
-        if (isMessageSent) {
-            toast.error('Você já enviou uma mensagem!')
-            return
+        if (isMessageSent) return toast.error('Mensagem já enviada')
+        if (!token) {
+            return toast.error('O captcha não foi preenchido')
         }
         const loading = toast.loading('Enviando mensagem...')
-        const emailResponse = await send(data)
-        if (emailResponse.sent) {
-            toast.success('Mensagem enviada com sucesso!', { id: loading })
+        const response = await fetch(
+            `/api/send?email=${data.email}&phone=${data.phone}&message=${data.message}&token=${token}`
+        )
+        if (response.status === 200) {
+            toast.dismiss(loading)
+            toast.success('Mensagem enviada com sucesso')
             setIsMessageSent(true)
-        } else {
-            toast.error('Erro ao enviar mensagem', { id: loading })
+        }
+        if (response.status !== 200) {
+            toast.dismiss(loading)
+            toast.error('Erro ao enviar mensagem')
         }
     }
 
@@ -118,6 +125,11 @@ export default function Form() {
                             id="message"
                         />
                     </MotionFieldset>
+                    <TurnstileWidget
+                        onVerify={(token) => {
+                            setToken(token)
+                        }}
+                    />
                     <MotionButton
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
