@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { MotionH4 } from './components/framer-motion/motion-h4'
 import { MotionButton } from './components/framer-motion/motion-button'
+import Link from 'next/link'
+import { MotionDiv } from './components/framer-motion/motion-div'
 
 export default function Cta() {
     return (
@@ -21,14 +23,20 @@ export default function Cta() {
             >
                 Não fique no passado, venha conosco para o futuro.
             </MotionH4>
-            <MotionButton
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="bg-background text-primary py-4 px-8 rounded-xl z-10"
-                type="button"
+            <Link
+                className="w-full h-ful z-10 self-center flex items-center justify-center"
+                href="#contact"
             >
-                Conecte-se ao futuro
-            </MotionButton>
+                <MotionButton
+                    className="bg-background text-primary py-4 px-8 rounded-xl z-20"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    Conecte-se ao futuro
+                </MotionButton>
+            </Link>
         </section>
     )
 }

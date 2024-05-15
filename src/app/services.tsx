@@ -18,7 +18,7 @@ const Service = ({ text }: { text: string }) => (
 
 export default function Services() {
     return (
-        <section className="max-w-screen-2xl mx-auto px-10 pt-8">
+        <section id="services" className="max-w-screen-2xl mx-auto px-10 pt-8">
             <MotionH4
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}

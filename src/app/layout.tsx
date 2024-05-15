@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const headerSections = [
     { displayName: 'Início', href: '/' },
-    { displayName: 'Serviços', href: '/' },
+    { displayName: 'Serviços', href: '#services' },
 ]
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
             <body className={poppins.className}>
                 <div className="flex flex-col h-full">
                     <Header sections={headerSections} />
-                    <main className="flex-1 overflow-y-auto overflow-x-hidden">
+                    <main className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth">
                         {children}
                     </main>
                 </div>

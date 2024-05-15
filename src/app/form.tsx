@@ -1,7 +1,6 @@
 'use client'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
-import Turnstile from 'react-turnstile'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -11,9 +10,25 @@ import { MotionButton } from './components/framer-motion/motion-button'
 import { useState } from 'react'
 import TurnstileWidget from './components/turnstile'
 
+function formatWhatsAppNumber(value: string) {
+    const cleanedValue = value.replace(/\D/g, '')
+    if (cleanedValue.length > 11) {
+        const resettedValue = cleanedValue.slice(0, -1)
+        return resettedValue
+            .replace(/^(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{5})(\d)/, '$1-$2')
+    }
+    return cleanedValue
+        .replace(/^(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+}
+
 const schema = z.object({
     email: z.string().email({ message: 'Email inválido' }),
-    phone: z.string().min(10, 'Telefone inválido').max(11),
+    phone: z.string().refine((value) => {
+        const cleanedValue = value.replace(/\D/g, '')
+        return cleanedValue.length === 11
+    }, 'Telefone Inválido'),
     message: z
         .string()
         .min(10, 'Mensagem contém menos que 11 caracteres')
@@ -60,6 +75,7 @@ export default function Form() {
 
     return (
         <form
+            id="contact"
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col items-center justify-between xl:flex-row gap-20 xl:gap-20 max-w-screen-2xl mx-auto px-10"
         >
@@ -102,7 +118,13 @@ export default function Form() {
                             </em>
                         </label>
                         <input
-                            {...register('phone')}
+                            {...register('phone', {
+                                onChange: (e) => {
+                                    e.target.value = formatWhatsAppNumber(
+                                        e.target.value
+                                    )
+                                },
+                            })}
                             type="text"
                             className={inputClasses}
                             id="phone"

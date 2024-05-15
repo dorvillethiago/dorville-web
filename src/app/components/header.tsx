@@ -94,16 +94,18 @@ const SectionList = ({ sections }: HeaderProps) => (
             </Link>
         ))}
         <div>
-            <MotionButton
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="button"
-                className="text-background py-2 px-4 font-medium rounded-lg bg-gradient-to-br from-light-primary to-accent"
-            >
-                Entrar em Contato
-            </MotionButton>
+            <Link href="#contact">
+                <MotionButton
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="button"
+                    className="text-background py-2 px-4 font-medium rounded-lg bg-gradient-to-br from-light-primary to-accent"
+                >
+                    Entrar em Contato
+                </MotionButton>
+            </Link>
         </div>
     </MotionDiv>
 )
