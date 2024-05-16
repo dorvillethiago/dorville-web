@@ -66,8 +66,10 @@ export default function Form() {
             toast.dismiss(loading)
             toast.success('Mensagem enviada com sucesso')
             setIsMessageSent(true)
-        }
-        if (response.status !== 200) {
+        } else if (response.status === 429) {
+            toast.dismiss(loading)
+            toast.error('Limite de mensagens excedido')
+        } else if (response.status !== 200) {
             toast.dismiss(loading)
             toast.error('Erro ao enviar mensagem')
         }

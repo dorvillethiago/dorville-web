@@ -1,8 +1,34 @@
 import nodemailer from 'nodemailer'
 
+const idToRequestCount = new Map<string, number>() // keeps track of individual users
+
+const rateLimiter = {
+    windowStart: Date.now(),
+    windowSize: 300000,
+    maxRequests: 1,
+}
+
+const limit = (ip: string) => {
+    // Check and update current window
+    const now = Date.now()
+    const isNewWindow = now - rateLimiter.windowStart > rateLimiter.windowSize
+    if (isNewWindow) {
+        rateLimiter.windowStart = now
+        idToRequestCount.set(ip, 0)
+    }
+    // Check and update current request limits
+    const currentRequestCount = idToRequestCount.get(ip) ?? 0
+    if (currentRequestCount >= rateLimiter.maxRequests) return true
+    idToRequestCount.set(ip, currentRequestCount + 1)
+    return false
+}
+
 export async function GET(request: Request) {
-    // Captcha Validation
     const ip = request.headers.get('cf-connecting-ip')
+    const isRateLimited = limit(ip as string)
+    if (isRateLimited)
+        return new Response('Rate limit exceeded', { status: 429 })
+    // Captcha Validation
     const { searchParams } = new URL(request.url)
     const token = searchParams.get('token')
     const formData = new FormData()
