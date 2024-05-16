@@ -94,7 +94,7 @@ export default function Form() {
                         className="flex flex-col gap-2"
                     >
                         <label htmlFor="email">
-                            Email
+                            E-mail
                             <em className="text-red-400 text-xs ml-3">
                                 {errors.email?.message}
                             </em>
@@ -112,7 +112,7 @@ export default function Form() {
                         className="flex flex-col gap-2"
                     >
                         <label htmlFor="phone">
-                            Phone{' '}
+                            WhatsApp{' '}
                             <em className="text-red-400 text-xs ml-3">
                                 {errors.phone?.message}
                             </em>
