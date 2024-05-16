@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { MotionH4 } from './components/framer-motion/motion-h4'
 import { MotionButton } from './components/framer-motion/motion-button'
 import Link from 'next/link'
-import { MotionDiv } from './components/framer-motion/motion-div'
 
 export default function Cta() {
     return (
@@ -11,6 +10,8 @@ export default function Cta() {
                 width={1440}
                 height={245}
                 priority
+                blurDataURL="/alternative-tech-background-sm.jpg"
+                placeholder="blur"
                 className="absolute object-cover h-full w-full"
                 src="/alternative-tech-background.jpg"
                 alt="Tech Background"

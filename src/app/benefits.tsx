@@ -51,6 +51,8 @@ export default function Benefits() {
                 >
                     <Image
                         className="rounded-lg w-full min-w-[500px] xl:min-w-[600px]"
+                        blurDataURL="dashboard-tablet-sm.jpeg"
+                        placeholder="blur"
                         src="/dashboard-tablet.png"
                         alt="Dashboard tablet"
                         width={558}

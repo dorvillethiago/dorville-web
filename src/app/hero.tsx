@@ -58,6 +58,8 @@ export default function Hero() {
                 whileInView={{ opacity: 1, y: 0 }}
             >
                 <Image
+                    blurDataURL="/programming-girl-sm.jpg"
+                    placeholder="blur"
                     width={783}
                     height={458}
                     alt="Girl programming picture"
