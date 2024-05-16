@@ -3,6 +3,7 @@ import { MotionH1 } from './components/framer-motion/motion-h1'
 import { MotionButton } from './components/framer-motion/motion-button'
 import { MotionDiv } from './components/framer-motion/motion-div'
 import { MotionH2 } from './components/framer-motion/motion-h2'
+import Link from 'next/link'
 
 const Content = () => (
     <div className="flex max-w-[510px] xl:max-w-[560px] flex-col gap-8 lg:gap-16">
@@ -29,22 +30,26 @@ const Content = () => (
             transition={{ delay: 0.2 }}
             className="flex flex-col gap-4 lg:flex-row"
         >
-            <MotionButton
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="button"
-                className="px-5 py-3 rounded-lg bg-primary text-background w-fit"
-            >
-                Entrar em Contato
-            </MotionButton>
-            <MotionButton
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="button"
-                className="px-5 py-3 rounded-lg bg-secondary w-fit"
-            >
-                Saber Mais
-            </MotionButton>
+            <Link href="#contact">
+                <MotionButton
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="button"
+                    className="px-5 py-3 rounded-lg bg-primary text-background w-fit"
+                >
+                    Entrar em Contato
+                </MotionButton>
+            </Link>
+            <Link href="#services">
+                <MotionButton
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="button"
+                    className="px-5 py-3 rounded-lg bg-secondary w-fit"
+                >
+                    Saber Mais
+                </MotionButton>
+            </Link>
         </MotionDiv>
     </div>
 )
