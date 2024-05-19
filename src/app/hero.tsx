@@ -4,6 +4,7 @@ import { MotionButton } from './components/framer-motion/motion-button'
 import { MotionDiv } from './components/framer-motion/motion-div'
 import { MotionH2 } from './components/framer-motion/motion-h2'
 import Link from 'next/link'
+import { getBase64 } from './lib'
 
 const Content = () => (
     <div className="flex max-w-[510px] xl:max-w-[560px] flex-col gap-8 lg:gap-16">
@@ -54,7 +55,11 @@ const Content = () => (
     </div>
 )
 
-export default function Hero() {
+async function Hero() {
+
+    const HeroImagePlaceholder = await getBase64(`${process.env.URL}/programming-girl-sm.jpg`)
+    console.log(HeroImagePlaceholder)
+
     return (
         <section className="max-w-screen-2xl mx-auto px-10 pt-8 lg:pt-16 pb-16 overflow-x-hidden flex relative flex-col gap-12 lg:flex-row lg:justify-between lg:items-center">
             <Content />
@@ -63,7 +68,7 @@ export default function Hero() {
                 whileInView={{ opacity: 1, y: 0 }}
             >
                 <Image
-                    blurDataURL="/programming-girl-sm.jpg"
+                    blurDataURL={HeroImagePlaceholder}
                     placeholder="blur"
                     width={783}
                     height={458}
@@ -76,3 +81,5 @@ export default function Hero() {
         </section>
     )
 }
+
+export default Hero;
