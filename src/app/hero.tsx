@@ -12,7 +12,7 @@ const Content = () => (
             whileInView={{ opacity: 1, y: 0 }}
             className="font-semibold leading-[1.2em] text-5xl xl:text-6xl 2xl:text-7xl"
         >
-            <strong className="font-semibold text-primary">Software</strong>{' '}
+            <strong className="font-semibold text-primary">Seu Software</strong>{' '}
             seguro, ágil e acessível.
         </MotionH1>
         <MotionH2
@@ -21,8 +21,8 @@ const Content = () => (
             transition={{ delay: 0.1 }}
             className="leading-5"
         >
-            Desenvolvemos soluções tecnológicas para empresas de todos os tipos
-            e portes de forma escalável.
+            As três principais virtudes da Dorville. Soluções tecnológicas para
+            a sua empresa com garantia de qualidade, segurança e agilidade.
         </MotionH2>
         <MotionDiv
             initial={{ opacity: 0, y: -20 }}
@@ -37,7 +37,7 @@ const Content = () => (
                     type="button"
                     className="px-5 py-3 rounded-lg bg-primary text-background w-fit"
                 >
-                    Entrar em Contato
+                    Fazer Pedido
                 </MotionButton>
             </Link>
             <Link href="#services">

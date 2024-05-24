@@ -65,15 +65,15 @@ export default function Benefits() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="font-medium text-4xl"
                     >
-                        Por que seu negócio precisa de um software
-                        personalizado?
+                        Por que software personalizado é o
+                        <strong> diferencial da sua empresa</strong>?
                     </MotionH3>
                     <MotionP
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                     >
-                        Um software customizado é projetado para automatizar
-                        tarefas específicas e simplificar processos complexos.
+                        Você precisa de um software customizado para automatizar
+                        tarefas e simplificar processos complexos.
                     </MotionP>
                     <div className="flex flex-col gap-3">
                         <Benefit text="Aderência á especificidade do seu negócio" />

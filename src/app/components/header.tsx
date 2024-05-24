@@ -103,7 +103,7 @@ const SectionList = ({ sections }: HeaderProps) => (
                     type="button"
                     className="text-background py-2 px-4 font-medium rounded-lg bg-gradient-to-br from-light-primary to-accent"
                 >
-                    Entrar em Contato
+                    Fazer Pedido
                 </MotionButton>
             </Link>
         </div>
