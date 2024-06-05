@@ -58,7 +58,6 @@ const Content = () => (
 async function Hero() {
 
     const HeroImagePlaceholder = await getBase64(`${process.env.URL}/programming-girl-sm.jpg`)
-    console.log(HeroImagePlaceholder)
 
     return (
         <section className="max-w-screen-2xl mx-auto px-10 pt-8 lg:pt-16 pb-16 overflow-x-hidden flex relative flex-col gap-12 lg:flex-row lg:justify-between lg:items-center">
