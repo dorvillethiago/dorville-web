@@ -5,7 +5,8 @@ import Benefits from '@/app/benefits'
 import Services from '@/app/services'
 import Form from '@/app/form'
 import Cta from '@/app/cta'
-import Footer from './components/footer'
+import Footer from '@/app/components/footer'
+import ContactDialog from '@/app/contact-dialog'
 
 export default function Page() {
     return (
@@ -17,6 +18,7 @@ export default function Page() {
             <Cta />
             <Form />
             <Footer />
+            <ContactDialog />
         </>
     )
 }
