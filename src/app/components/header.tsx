@@ -1,8 +1,10 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 import { MotionButton } from './framer-motion/motion-button'
 import { MotionDiv } from './framer-motion/motion-div'
 import ContactButton from './contact-button'
+import { useDialogsStore } from '../state/dialogs'
 
 const Logo = () => (
 	<MotionDiv
@@ -76,25 +78,27 @@ interface HeaderProps {
 	sections: Section[]
 }
 
-const SectionList = ({ sections }: HeaderProps) => (
-	<MotionDiv
-		initial={{ opacity: 0, y: -20 }}
-		whileInView={{ opacity: 1, y: 0 }}
-		className="flex gap-7 items-center border-gradient max-[716px]:hidden"
-	>
-		{sections.map((section) => (
-			<Link
-				className="relative hover:text-primary transition-colors"
-				key={section.displayName}
-				href={section.href}
-			>
-				{section.displayName}
-			</Link>
-		))}
-		<ContactButton />
-		<div>
-			<Link href="#contact">
+const SectionList = ({ sections }: HeaderProps) => {
+	const setContactDialog = useDialogsStore((state) => state.setContactDialog)
+	return (
+		<MotionDiv
+			initial={{ opacity: 0, y: -20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			className="flex gap-7 items-center border-gradient max-[716px]:hidden"
+		>
+			{sections.map((section) => (
+				<Link
+					className="relative hover:text-primary transition-colors"
+					key={section.displayName}
+					href={section.href}
+				>
+					{section.displayName}
+				</Link>
+			))}
+			<ContactButton />
+			<div>
 				<MotionButton
+					onClick={() => setContactDialog(true)}
 					initial={{ opacity: 0, y: -20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					whileHover={{ scale: 1.05 }}
@@ -104,10 +108,10 @@ const SectionList = ({ sections }: HeaderProps) => (
 				>
 					Fazer Pedido
 				</MotionButton>
-			</Link>
-		</div>
-	</MotionDiv>
-)
+			</div>
+		</MotionDiv>
+	)
+}
 
 const SidebarButton = () => (
 	<MotionButton
